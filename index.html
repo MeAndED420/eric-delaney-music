@@ -1,114 +1,52 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eric Delaney Music</title>
-  <meta name="description" content="Eric Delaney Music — Steamboat Springs, Colorado" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#music">Music</a>
-      <a href="#shows">Shows</a>
-      <a href="#about">About</a>
-      <a href="#photos">Photos</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="socials">
-      <a href="#" aria-label="Facebook">f</a>
-      <a href="#" aria-label="Instagram">◎</a>
-      <a href="#" aria-label="YouTube">▶</a>
-      <a href="#" aria-label="Spotify">●</a>
-    </div>
-  </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="tagline">
-        <h1>Rooted<br />in the<br />Mountains.</h1>
-        <p>Driven by<br />The Music.</p>
-      </div>
+<body style="margin:0; font-family:Arial; background:black; color:white; text-align:center;">
 
-      <img class="hero-logo" src="assets/logo.png" alt="Eric Delaney Music logo" />
+  <!-- HERO SECTION -->
+  <div style="padding:100px 20px;">
+    <h1 style="font-size:50px;">Eric Delaney 🎸</h1>
+    <p style="font-size:20px;">Steamboat Springs, Colorado</p>
+    <p style="font-size:24px;">Big Tasty Music</p>
 
-      <div class="hero-action">
-        <a class="btn" href="#music">▶ Listen Now</a>
-        <span class="down">⌄</span>
-      </div>
-    </section>
+    <p style="margin-top:30px;">
+      <a href="https://www.instagram.com/ericdelaneymusic/" target="_blank" style="color:white; margin:10px;">Instagram</a>
+      <a href="https://www.facebook.com/eric.delaney.56" target="_blank" style="color:white; margin:10px;">Facebook</a>
+      <a href="mailto:ericdelaney@rocketmail.com" style="color:white; margin:10px;">Book Me</a>
+    </p>
+  </div>
 
-    <section class="cards">
-      <article id="music" class="panel">
-        <h2>Latest Music</h2>
-        <div class="music-grid">
-          <div class="album-art">Mile by Mile</div>
-          <div>
-            <h3 id="songTitle">Mile By Mile</h3>
-            <p>Eric Delaney</p>
-            <div class="progress"><span id="progressBar"></span></div>
-            <div class="controls">
-              <button id="prevBtn">‹</button>
-              <button id="playBtn" class="play">▶</button>
-              <button id="nextBtn">›</button>
-            </div>
-          </div>
-        </div>
-        <ul id="trackList" class="tracks"></ul>
-        <a class="outline" href="#">View All Music</a>
-      </article>
+  <!-- ABOUT -->
+  <div style="padding:50px 20px; background:#111;">
+    <h2>About</h2>
+    <p style="max-width:600px; margin:auto;">
+      Eric Delaney is a guitarist and performer based in Steamboat Springs, Colorado.
+      Delivering high-energy live sets and soulful tones, Eric blends rock, jam, and
+      Americana into a sound that connects with every audience.
+    </p>
+  </div>
 
-      <article id="shows" class="panel">
-        <h2>Upcoming Shows</h2>
-        <p>8/13 – The Glen Eden (Clark, CO)</p>
-    <p>8/14 – The Range</p>
-    <p>8/15 – Thunderhead Deck</p>
-    <p>8/17 – Aurum</p>
-    <p>8/19 – Haymaker Golf Tournament (Breast Cancer Fundraiser)</p>
-    <p>8/20 – Sunset Happy Hour (Opener)</p>
-    <p>8/27 – The Press (Amanda Hofer Trio)</p>
-    <p>8/28 – Harisons</p>
-    <p>8/29 – The Laundry</p>
+  <!-- MUSIC -->
+  <div style="padding:50px 20px;">
+    <h2>Music</h2>
+    <p>Spotify and YouTube coming soon</p>
+  </div>
 
-    <h3>September</h3>
-    <p>9/4 – Harisons</p>
-    <p>9/5 – The Range</p>
-    <p>9/11 – Thunderhead Comedy (Opener)</p>
-    <p>9/12 – Thunderhead Deck</p>
-    <p>9/20 – Sunset Happy Hour (Opener)</p>
-    <p>9/22 – Grand Lake, CO (TASTE TEST / Private Party)</p>
-    <p>9/26 – Steamboat Farmers Market</p>
+  <!-- SHOWS -->
+  <div style="padding:50px 20px; background:#111;">
+    <h2>Upcoming Shows</h2>
+    <p>Dates coming soon</p>
+  </div>
 
-      <article id="about" class="panel">
-        <h2>About Eric</h2>
-        <div class="photo-placeholder">Live Photo</div>
-        <p>Eric Delaney is a Colorado-based musician whose sound blends mountain soul, rock, americana, and big tasty grooves.</p>
-        <a class="outline" href="#contact">Learn More</a>
-      </article>
-    </section>
+  <!-- CONTACT -->
+  <div style="padding:50px 20px;">
+    <h2>Contact / Booking</h2>
+    <p>Email: <a href="mailto:ericdelaney@rocketmail.com" style="color:white;">ericdelaney@rocketmail.com</a></p>
+  </div>
 
-    <section id="contact" class="booking panel wide">
-      <div>
-        <h2>Book Eric Delaney</h2>
-        <p class="script">Private Events · Festivals · Bars & Restaurants · Weddings</p>
-      </div>
-      <form action="mailto:booking@ericdelaneymusic.com" method="post" enctype="text/plain">
-        <input name="name" placeholder="Name" required />
-        <input name="email" type="email" placeholder="Email" required />
-        <input name="event" placeholder="Event Type" />
-        <input name="date" type="date" />
-        <textarea name="message" placeholder="Message"></textarea>
-        <button class="btn" type="submit">Send Inquiry</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Eric Delaney Music. All Rights Reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
