@@ -100,18 +100,20 @@ a { color: var(--cream); text-decoration: none; }
   text-transform: none;
   margin-top: 18px;
 }
-.hero-action { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-.btn, .outline {
-  display: inline-block;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  background: rgba(0,0,0,.45);
+.hero-action {
+  text-align: center;
+  z-index: 2;
+}
+
+.btn {
+  border: 2px solid #d99a00;
+  color: #f4c542;
+  background: rgba(0,0,0,0.45);
   padding: 14px 28px;
-  border-radius: 7px;
+  text-decoration: none;
   text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: 1px;
-  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
 }
 .btn:hover, .outline:hover { background: var(--gold); color: #111; }
 .down { font-size: 3rem; color: var(--cream); }
