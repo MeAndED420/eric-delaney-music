@@ -72,13 +72,7 @@ a { color: var(--cream); text-decoration: none; }
   padding: 70px 8%;
   position: relative;
 }
-.hero-logo {
-  width: 430px;
-  max-width: 45vw;
-  display: block;
-  margin: 0 auto;
-  z-index: 2;
-}
+
 @keyframes float { 50% { transform: translateY(-8px); } }
 .tagline {
   color: #f4e0b0;
