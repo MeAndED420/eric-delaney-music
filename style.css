@@ -62,7 +62,7 @@ a { color: var(--cream); text-decoration: none; }
   min-height: 520px;
   background:
     linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("assets/header-bg.png");
+    url("hopeful header-bg.png");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
