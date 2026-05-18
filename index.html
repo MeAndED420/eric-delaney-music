@@ -97,28 +97,17 @@
         <a class="outline" href="mailto:ericdelaney@rocketmail.com?subject=Music%20Inquiry">Music Inquiry</a>
       </article>
 
-      <article id="shows" class="panel">
-        <h2>Upcoming Shows</h2>
+     <article id="shows" class="panel">
+  <h2>Upcoming Shows</h2>
+  <div id="upcomingShows"></div>
 
-        <div class="show"><strong>May<br />15</strong><p>Haymaker<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Haymaker%20May%2015">Info</a></div>
-        <div class="show"><strong>May<br />28</strong><p>Mythology<br /><small>Private Event · 2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Mythology%20May%2028">Info</a></div>
+  <h2 class="past-title">Past Shows</h2>
+  <div id="pastShows"></div>
 
-        <div class="show"><strong>Jun<br />04</strong><p>The Laundry<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=The%20Laundry%20Jun%2004">Info</a></div>
-        <div class="show"><strong>Jun<br />05</strong><p>Haymaker<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Haymaker%20Jun%2005">Info</a></div>
-        <div class="show"><strong>Jun<br />06</strong><p>Harisons<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Harisons%20Jun%2006">Info</a></div>
-        <div class="show"><strong>Jun<br />07</strong><p>Thunderhead Deck<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Thunderhead%20Deck%20Jun%2007">Info</a></div>
-        <div class="show"><strong>Jun<br />11</strong><p>Sunset Happy Hour<br /><small>Opener · 2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Sunset%20Happy%20Hour%20Jun%2011">Info</a></div>
-        <div class="show"><strong>Jun<br />13</strong><p>Steamboat Farmers Market<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Farmers%20Market%20Jun%2013">Info</a></div>
-        <div class="show"><strong>Jun<br />13</strong><p>SpringHill Suites<br /><small>Grand Opening · 2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=SpringHill%20Suites%20Jun%2013">Info</a></div>
-        <div class="show"><strong>Jun<br />15</strong><p>Aurum<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Aurum%20Jun%2015">Info</a></div>
-        <div class="show"><strong>Jun<br />18</strong><p>Timber &amp; Torch<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Timber%20and%20Torch%20Jun%2018">Info</a></div>
-        <div class="show"><strong>Jun<br />19</strong><p>The Laundry<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=The%20Laundry%20Jun%2019">Info</a></div>
-        <div class="show"><strong>Jun<br />20</strong><p>Harisons<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Harisons%20Jun%2020">Info</a></div>
-        <div class="show"><strong>Jun<br />22</strong><p>The Range<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=The%20Range%20Jun%2022">Info</a></div>
-        <div class="show"><strong>Jun<br />29</strong><p>Aurum<br /><small>2026</small></p><a href="mailto:ericdelaney@rocketmail.com?subject=Aurum%20Jun%2029">Info</a></div>
-
-        <a class="outline" href="mailto:ericdelaney@rocketmail.com?subject=Show%20Information">View All Shows / Contact</a>
-      </article>
+  <a class="outline" href="mailto:ericdelaney@rocketmail.com?subject=Show%20Information">
+    View All Shows / Contact
+  </a>
+</article>
 
       <article id="about" class="panel">
         <h2>About Eric</h2>
@@ -154,6 +143,58 @@ Whether leading a band or hosting a rotating lineup of talent, Eric Delaney crea
   <footer>
     <p>© 2026 Eric Delaney Music. All Rights Reserved.</p>
   </footer>
+
+<script>
+const shows = [
+  { date: "2026-05-15", venue: "Haymaker", note: "" },
+  { date: "2026-05-28", venue: "Mythology", note: "Private Event" },
+  { date: "2026-06-04", venue: "The Laundry", note: "" },
+  { date: "2026-06-05", venue: "Haymaker", note: "" },
+  { date: "2026-06-06", venue: "Harisons", note: "" },
+  { date: "2026-06-07", venue: "Thunderhead Deck", note: "" },
+  { date: "2026-06-11", venue: "Sunset Happy Hour", note: "Opener" },
+  { date: "2026-06-13", venue: "Steamboat Farmers Market", note: "" },
+  { date: "2026-06-13", venue: "SpringHill Suites", note: "Grand Opening" },
+  { date: "2026-06-15", venue: "Aurum", note: "" },
+  { date: "2026-06-18", venue: "Timber & Torch", note: "" },
+  { date: "2026-06-19", venue: "The Laundry", note: "" },
+  { date: "2026-06-20", venue: "Harisons", note: "" },
+  { date: "2026-06-22", venue: "The Range", note: "" },
+  { date: "2026-06-29", venue: "Aurum", note: "" }
+];
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const upcomingShows = document.getElementById("upcomingShows");
+const pastShows = document.getElementById("pastShows");
+
+shows
+  .sort((a, b) => new Date(a.date) - new Date(b.date))
+  .forEach(show => {
+    const showDate = new Date(show.date + "T00:00:00");
+    const month = showDate.toLocaleString("en-US", { month: "short" });
+    const day = String(showDate.getDate()).padStart(2, "0");
+    const year = showDate.getFullYear();
+
+    const subject = encodeURIComponent(`${show.venue} ${month} ${day}`);
+    const note = show.note ? `${show.note} · ${year}` : year;
+
+    const showHTML = `
+      <div class="show">
+        <strong>${month}<br />${day}</strong>
+        <p>${show.venue}<br /><small>${note}</small></p>
+        <a href="mailto:ericdelaney@rocketmail.com?subject=${subject}">Info</a>
+      </div>
+    `;
+
+    if (showDate >= today) {
+      upcomingShows.innerHTML += showHTML;
+    } else {
+      pastShows.innerHTML += showHTML;
+    }
+  });
+</script>
 
   <script src="script.js"></script>
 </body>
