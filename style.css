@@ -230,3 +230,21 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   margin-top: 20px;
   cursor: pointer;
 }
+
+.show {
+  display: grid;
+  grid-template-columns: 95px 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.show strong {
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: center;
+}
+
+.show p {
+  margin: 0;
+  line-height: 1.25;
+}
