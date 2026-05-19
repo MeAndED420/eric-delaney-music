@@ -175,14 +175,7 @@
 
 <section id="book-now" class="booking-calendar panel wide">
   <h2>Book Eric Delaney</h2>
-
-<section id="book-now" class="booking-calendar panel wide">
-  <h2>Book Eric Delaney</h2>
-  <p>Unavailable dates are marked with an X.</p>
-
-<section id="book-now" class="booking-calendar panel wide">
-  <h2>Book Eric Delaney</h2>
-  <p>Unavailable dates are marked with an X.</p>
+  <p>Available dates can be selected. Unavailable dates are marked with an X.</p>
 
   <div class="calendar-controls">
     <button id="prevMonth" type="button">‹</button>
@@ -358,114 +351,127 @@ renderShows();
 </script>
 
 <script>
-const manuallyBlockedDates = [
-  "2026-07-18",
-  "2026-07-19"
-];
+document.addEventListener("DOMContentLoaded", function () {
 
-const bookedDates = shows.map(show => show.date);
+  const extraBlockedDates = [
+    "2026-07-18",
+    "2026-08-01"
+  ];
 
-const unavailableDates = [
-  ...new Set([...bookedDates, ...manuallyBlockedDates])
-];
+  const bookedDates = shows.map(show => show.date);
 
-const bookingDate = document.getElementById("bookingDate");
-const dateMessage = document.getElementById("dateMessage");
-const bookingEmail = document.getElementById("bookingEmail");
+  const unavailableDates = [
+    ...new Set([...bookedDates, ...extraBlockedDates])
+  ];
 
-bookingDate.addEventListener("change", function () {
-  const selectedDate = bookingDate.value;
+  let currentCalendarDate = new Date(2026, 4, 1);
 
-  if (unavailableDates.includes(selectedDate)) {
-    dateMessage.textContent = "Sorry, Eric is unavailable on this date.";
-    dateMessage.className = "date-unavailable";
-    bookingEmail.style.pointerEvents = "none";
-    bookingEmail.style.opacity = "0.5";
-    bookingEmail.href = "#";
-  } else {
-    dateMessage.textContent = "This date appears available. Continue with your booking inquiry.";
-    dateMessage.className = "date-available";
-    bookingEmail.style.pointerEvents = "auto";
-    bookingEmail.style.opacity = "1";
-    bookingEmail.href = `mailto:ericdelaney@rocketmail.com?subject=Booking Inquiry for ${selectedDate}`;
-  }
-});
-</script>
-<script>
-const manuallyBlockedDates = [
-  "2026-07-18",
-  "2026-08-01"
-];
+  const calendarMonth = document.getElementById("calendarMonth");
+  const calendarGrid = document.getElementById("calendarGrid");
+  const dateMessage = document.getElementById("dateMessage");
 
-const bookedDates = shows.map(show => show.date);
-const unavailableDates = [...new Set([...bookedDates, ...manuallyBlockedDates])];
-
-let currentCalendarDate = new Date();
-
-const calendarMonth = document.getElementById("calendarMonth");
-const calendarGrid = document.getElementById("calendarGrid");
-const dateMessage = document.getElementById("dateMessage");
-
-function formatDateKey(year, month, day) {
-  return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-}
-
-function renderCalendar() {
-  calendarGrid.innerHTML = "";
-
-  const year = currentCalendarDate.getFullYear();
-  const month = currentCalendarDate.getMonth();
-
-  calendarMonth.textContent = currentCalendarDate.toLocaleString("en-US", {
-    month: "long",
-    year: "numeric"
-  });
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  for (let i = 0; i < firstDay; i++) {
-    calendarGrid.innerHTML += `<div class="calendar-day empty"></div>`;
+  function formatDateKey(year, month, day) {
+    return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   }
 
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dateKey = formatDateKey(year, month, day);
-    const isUnavailable = unavailableDates.includes(dateKey);
+  function renderCalendar() {
 
-    calendarGrid.innerHTML += `
-      <button
-        type="button"
-        class="calendar-day ${isUnavailable ? "unavailable" : "available"}"
-        data-date="${dateKey}"
-        ${isUnavailable ? "disabled" : ""}
-      >
-        <span>${day}</span>
-        ${isUnavailable ? '<span class="x-mark">×</span>' : ""}
-      </button>
-    `;
+    calendarGrid.innerHTML = "";
+
+    const year = currentCalendarDate.getFullYear();
+    const month = currentCalendarDate.getMonth();
+
+    calendarMonth.textContent =
+      currentCalendarDate.toLocaleString("en-US", {
+        month: "long",
+        year: "numeric"
+      });
+
+    const firstDay = new Date(year, month, 1).getDay();
+
+    const daysInMonth =
+      new Date(year, month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      calendarGrid.innerHTML +=
+        `<div class="calendar-day empty"></div>`;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+
+      const dateKey =
+        formatDateKey(year, month, day);
+
+      const isUnavailable =
+        unavailableDates.includes(dateKey);
+
+      calendarGrid.innerHTML += `
+        <button
+          type="button"
+          class="calendar-day ${isUnavailable ? "unavailable" : "available"}"
+          data-date="${dateKey}"
+          ${isUnavailable ? "disabled" : ""}
+        >
+
+          <span class="day-number">${day}</span>
+
+          ${isUnavailable
+            ? '<span class="x-mark">×</span>'
+            : ""}
+
+        </button>
+      `;
+    }
+
+    document
+      .querySelectorAll(".calendar-day.available")
+      .forEach(day => {
+
+        day.addEventListener("click", () => {
+
+          const selectedDate = day.dataset.date;
+
+          dateMessage.innerHTML = `
+            <strong>${selectedDate}</strong>
+            is available.<br><br>
+
+            <a class="btn"
+               href="mailto:ericdelaney@rocketmail.com?subject=Booking Inquiry for ${selectedDate}">
+               Book This Date
+            </a>
+          `;
+        });
+
+      });
   }
 
-  document.querySelectorAll(".calendar-day.available").forEach(day => {
-    day.addEventListener("click", () => {
-      const selectedDate = day.dataset.date;
-      dateMessage.textContent = `This date appears available: ${selectedDate}`;
-      dateMessage.className = "date-available";
+  document
+    .getElementById("prevMonth")
+    .addEventListener("click", () => {
+
+      currentCalendarDate.setMonth(
+        currentCalendarDate.getMonth() - 1
+      );
+
+      renderCalendar();
     });
-  });
-}
 
-document.getElementById("prevMonth").addEventListener("click", () => {
-  currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+  document
+    .getElementById("nextMonth")
+    .addEventListener("click", () => {
+
+      currentCalendarDate.setMonth(
+        currentCalendarDate.getMonth() + 1
+      );
+
+      renderCalendar();
+    });
+
   renderCalendar();
-});
 
-document.getElementById("nextMonth").addEventListener("click", () => {
-  currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
-  renderCalendar();
 });
-
-renderCalendar();
 </script>
-  <script src="script.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
