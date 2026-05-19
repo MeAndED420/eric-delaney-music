@@ -260,16 +260,16 @@ let showingAllUpcoming = false;
 
 function createShowHTML(show) {
   const showDate = new Date(show.date + "T00:00:00");
-  const month = String(showDate.getMonth() + 1).padStart(2, "0");
+  const month = showDate.toLocaleString("en-US", { month: "short" });
   const day = String(showDate.getDate()).padStart(2, "0");
-  const year = String(showDate.getFullYear()).slice(-2);
+  const year = showDate.getFullYear();
 
   const note = show.note ? `<small>${show.note}</small>` : "";
   const subject = encodeURIComponent(`${show.venue} ${month}/${day}/${year}`);
 
   return `
     <div class="show">
-      <strong>${month}/${day}/${year}</strong>
+      <strong>${month}<br />${day}</strong>
       <p>${show.venue}<br>${note}</p>
       <a href="mailto:ericdelaney@rocketmail.com?subject=${subject}">Info</a>
     </div>
