@@ -122,7 +122,7 @@
 
 </div>
 
-        <a class="outline" href="mailto:ericdelaney@rocketmail.com?subject=Music%20Inquiry">Music Inquiry</a>
+        <a class="outline" href="#contact">Music Inquiry</a>
       </article>
 
      <article id="shows" class="panel">
@@ -134,7 +134,7 @@
   <h2 class="past-title">Past Shows</h2>
   <div id="pastShows"></div>
 
-  <a class="outline" href="mailto:ericdelaney@rocketmail.com?subject=Show%20Information">
+<a class="outline" href="#contact">
     View All Shows / Contact
   </a>
 </article>
@@ -206,10 +206,22 @@
         <p class="script">Private Events · Festivals · Bars & Restaurants · Weddings</p>
       </div>
 
-      <form action="mailto:ericdelaney@rocketmail.com" method="post" enctype="text/plain">
+      <form action="https://formspree.io/f/xwvzvvzd" method="POST">
+<input type="hidden"
+       name="_subject"
+       value="Eric Delaney Booking Inquiry">
         <input name="name" placeholder="Name" required />
-        <input name="email" type="email" placeholder="Email" required />
-        <input name="event" placeholder="Event Type" />
+
+<input name="email"
+       type="email"
+       placeholder="Email"
+       required />
+
+<input name="phone"
+       type="tel"
+       placeholder="Phone Number (Optional)" />
+
+<input name="event" placeholder="Event Type" />
         <input name="date" type="date" />
         <textarea name="message" placeholder="Message"></textarea>
         <button class="btn" type="submit">Send Inquiry</button>
@@ -298,7 +310,10 @@ function createShowHTML(show) {
     <div class="show">
       <strong>${month}<br />${day}</strong>
       <p>${show.venue}<br>${note}</p>
-      <a href="mailto:ericdelaney@rocketmail.com?subject=${subject}">Info</a>
+      <a href="#contact"
+   onclick="document.querySelector('input[name=date]').value='${show.date}'">
+   Info
+</a>
     </div>
   `;
 }
@@ -438,9 +453,10 @@ document.addEventListener("DOMContentLoaded", function () {
             is available.<br><br>
 
             <a class="btn"
-               href="mailto:ericdelaney@rocketmail.com?subject=Booking Inquiry for ${selectedDate}">
-               Book This Date
-            </a>
+   href="#contact"
+   onclick="document.querySelector('input[name=date]').value='${selectedDate}'">
+   Book This Date
+</a>
           `;
         });
 
