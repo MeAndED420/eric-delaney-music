@@ -225,3 +225,8 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   color: #f7b91e;
   transform: scale(1.15);
 }
+
+.view-more-btn {
+  margin-top: 20px;
+  cursor: pointer;
+}
