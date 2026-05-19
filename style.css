@@ -336,17 +336,3 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 #dateMessage {
   margin-top: 20px;
 }
-
-.booking-calendar {
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.62),
-      rgba(0, 0, 0, 0.72)
-    ),
-    url("assets/calendar-bg.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid rgba(247,185,30,.55);
-}
