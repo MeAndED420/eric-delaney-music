@@ -70,7 +70,7 @@ a { color: var(--cream); text-decoration: none; }
     rgba(0,0,0,.15),
     rgba(0,0,0,.72)
   ),
-  url('assets/hero-background.jpg');
+  url('assets/hero-bg.jpg');
 
 background-size: cover;
 background-position: center;
@@ -334,8 +334,5 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 }
 
 #dateMessage {
-  margin-top: 20px;
-}
-
   margin-top: 20px;
 }
