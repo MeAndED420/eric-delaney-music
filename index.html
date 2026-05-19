@@ -173,6 +173,20 @@
       </article>
     </section>
 
+<section id="book-now" class="booking-calendar panel wide">
+  <h2>Book Eric Delaney</h2>
+  <p>Select an available date below. Booked and unavailable dates are blocked out.</p>
+
+  <input id="bookingDate" type="date" />
+
+  <p id="dateMessage"></p>
+
+  <a id="bookingEmail"
+     class="btn"
+     href="mailto:ericdelaney@rocketmail.com?subject=Booking%20Inquiry">
+     Continue Booking Inquiry
+  </a>
+</section>
     <section id="contact" class="booking panel wide">
       <div>
         <h2>Book Eric Delaney</h2>
@@ -325,6 +339,40 @@ function toggleUpcomingShows() {
 renderShows();
 </script>
 
+<script>
+const manuallyBlockedDates = [
+  "2026-07-18",
+  "2026-07-19"
+];
+
+const bookedDates = shows.map(show => show.date);
+
+const unavailableDates = [
+  ...new Set([...bookedDates, ...manuallyBlockedDates])
+];
+
+const bookingDate = document.getElementById("bookingDate");
+const dateMessage = document.getElementById("dateMessage");
+const bookingEmail = document.getElementById("bookingEmail");
+
+bookingDate.addEventListener("change", function () {
+  const selectedDate = bookingDate.value;
+
+  if (unavailableDates.includes(selectedDate)) {
+    dateMessage.textContent = "Sorry, Eric is unavailable on this date.";
+    dateMessage.className = "date-unavailable";
+    bookingEmail.style.pointerEvents = "none";
+    bookingEmail.style.opacity = "0.5";
+    bookingEmail.href = "#";
+  } else {
+    dateMessage.textContent = "This date appears available. Continue with your booking inquiry.";
+    dateMessage.className = "date-available";
+    bookingEmail.style.pointerEvents = "auto";
+    bookingEmail.style.opacity = "1";
+    bookingEmail.href = `mailto:ericdelaney@rocketmail.com?subject=Booking Inquiry for ${selectedDate}`;
+  }
+});
+</script>
   <script src="script.js"></script>
 </body>
 </html>
