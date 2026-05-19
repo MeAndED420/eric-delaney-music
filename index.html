@@ -196,6 +196,7 @@
 
 <script>
 const shows = [
+  { date: "2026-05-15", venue: "Haymaker", note: "" },
   { date: "2026-05-28", venue: "Mythology", note: "Private Event" },
   { date: "2026-06-04", venue: "The Laundry", note: "" },
   { date: "2026-06-05", venue: "Haymaker", note: "" },
@@ -210,6 +211,7 @@ const shows = [
   { date: "2026-06-20", venue: "Harisons", note: "" },
   { date: "2026-06-22", venue: "The Range", note: "" },
   { date: "2026-06-29", venue: "Aurum", note: "" },
+
   { date: "2026-07-02", venue: "Sunset Happy Hour", note: "Opener" },
   { date: "2026-07-03", venue: "Meeker, CO", note: "TASTE TEST" },
   { date: "2026-07-04", venue: "Meeker, CO", note: "TASTE TEST / Private Party" },
@@ -227,6 +229,7 @@ const shows = [
   { date: "2026-07-25", venue: "Old Town Pub", note: "TASTE TEST" },
   { date: "2026-07-26", venue: "Thunderhead Deck", note: "" },
   { date: "2026-07-31", venue: "Harisons", note: "" },
+
   { date: "2026-08-03", venue: "Aurum", note: "" },
   { date: "2026-08-07", venue: "Harisons", note: "" },
   { date: "2026-08-08", venue: "The Laundry", note: "" },
@@ -240,6 +243,7 @@ const shows = [
   { date: "2026-08-27", venue: "The Press", note: "Amanda Hofer Trio" },
   { date: "2026-08-28", venue: "Harisons", note: "" },
   { date: "2026-08-29", venue: "The Laundry", note: "" },
+
   { date: "2026-09-04", venue: "Harisons", note: "" },
   { date: "2026-09-05", venue: "The Range", note: "" },
   { date: "2026-09-11", venue: "Thunderhead Comedy", note: "Opener" },
@@ -255,31 +259,73 @@ today.setHours(0, 0, 0, 0);
 const upcomingShows = document.getElementById("upcomingShows");
 const pastShows = document.getElementById("pastShows");
 
-shows
-  .sort((a, b) => new Date(a.date) - new Date(b.date))
-  .forEach(show => {
+let showingAllUpcoming = false;
+
+function createShowHTML(show) {
+  const showDate = new Date(show.date + "T00:00:00");
+  const month = String(showDate.getMonth() + 1).padStart(2, "0");
+  const day = String(showDate.getDate()).padStart(2, "0");
+  const year = String(showDate.getFullYear()).slice(-2);
+
+  const note = show.note ? `<small>${show.note}</small>` : "";
+  const subject = encodeURIComponent(`${show.venue} ${month}/${day}/${year}`);
+
+  return `
+    <div class="show">
+      <strong>${month}/${day}/${year}</strong>
+      <p>${show.venue}<br>${note}</p>
+      <a href="mailto:ericdelaney@rocketmail.com?subject=${subject}">Info</a>
+    </div>
+  `;
+}
+
+function renderShows() {
+  upcomingShows.innerHTML = "";
+  pastShows.innerHTML = "";
+
+  const sortedShows = shows.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const futureShows = sortedShows.filter(show => {
     const showDate = new Date(show.date + "T00:00:00");
-    const month = showDate.toLocaleString("en-US", { month: "short" });
-    const day = String(showDate.getDate()).padStart(2, "0");
-    const year = showDate.getFullYear();
-
-    const subject = encodeURIComponent(`${show.venue} ${month} ${day}`);
-    const note = show.note ? `${show.note} · ${year}` : year;
-
-    const showHTML = `
-      <div class="show">
-        <strong>${month}<br />${day}</strong>
-        <p>${show.venue}<br /><small>${note}</small></p>
-        <a href="mailto:ericdelaney@rocketmail.com?subject=${subject}">Info</a>
-      </div>
-    `;
-
-    if (showDate >= today) {
-      upcomingShows.innerHTML += showHTML;
-    } else {
-      pastShows.innerHTML += showHTML;
-    }
+    return showDate >= today;
   });
+
+  const oldShows = sortedShows.filter(show => {
+    const showDate = new Date(show.date + "T00:00:00");
+    return showDate < today;
+  });
+
+  const visibleUpcoming = showingAllUpcoming ? futureShows : futureShows.slice(0, 10);
+
+  visibleUpcoming.forEach(show => {
+    upcomingShows.innerHTML += createShowHTML(show);
+  });
+
+  if (futureShows.length > 10) {
+    upcomingShows.innerHTML += `
+      <button class="btn view-more-btn" onclick="toggleUpcomingShows()">
+        ${showingAllUpcoming ? "Show Less" : "View More Shows"}
+      </button>
+    `;
+  }
+
+  oldShows.reverse().forEach(show => {
+    pastShows.innerHTML += createShowHTML(show);
+  });
+
+  if (oldShows.length === 0) {
+    document.querySelector(".past-title").style.display = "none";
+  } else {
+    document.querySelector(".past-title").style.display = "block";
+  }
+}
+
+function toggleUpcomingShows() {
+  showingAllUpcoming = !showingAllUpcoming;
+  renderShows();
+}
+
+renderShows();
 </script>
 
   <script src="script.js"></script>
