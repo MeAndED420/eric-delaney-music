@@ -213,3 +213,15 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   font-size: 1.2rem;
   line-height: 1.4;
 }
+
+.socials a {
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: 0.3s ease;
+}
+
+.socials a:hover {
+  color: #f7b91e;
+  transform: scale(1.15);
+}
