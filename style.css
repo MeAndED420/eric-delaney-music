@@ -79,19 +79,6 @@ background-repeat: no-repeat;
 .hero-logo {
   width: min(100%, 540px);
 
-.booking-calendar {
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.75)
-    ),
-    url("assets/calendar-bg.png");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
   mix-blend-mode: screen;
 
   filter:
@@ -353,13 +340,12 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 .booking-calendar {
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.62),
-      rgba(0, 0, 0, 0.72)
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.75)
     ),
-    url("assets/calendar-bg.jpg");
+    url("assets/calendar-bg2.png");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid rgba(247,185,30,.55);
 }
