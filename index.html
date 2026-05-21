@@ -177,7 +177,9 @@
 
 <section id="book-now" class="booking-calendar panel wide">
   <h2>Book Eric Delaney</h2>
-  <p>Booked dates are marked with an icon, booking inquiries are still welcome.</p>
+  <p>
+LIVE dates indicate scheduled performances.
+Booking inquiries are still welcome for all dates.</p>
 
   <div class="calendar-controls">
     <button id="prevMonth" type="button">‹</button>
@@ -424,16 +426,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       calendarGrid.innerHTML += `
         <button
-          type="button"
-          class="calendar-day ${isUnavailable ? "unavailable" : "available"}"
-          data-date="${dateKey}"
-          ${isUnavailable ? "disabled" : ""}
+  type="button"
+  class="calendar-day ${isUnavailable ? "unavailable" : "available"}"
+  data-date="${dateKey}"
+>
         >
 
           <span class="day-number">${day}</span>
 
           ${isUnavailable
-  ? '<span class="cat-mark"></span>'
+  ? '<span class="live-mark">LIVE</span>'
   : ""}
 
         </button>
