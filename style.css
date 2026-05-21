@@ -311,8 +311,10 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 }
 
 .calendar-day.unavailable {
-  opacity: 0.45;
-  cursor: not-allowed;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 1;
+  border: 1px solid #a855f7;
 }
 
 .day-number {
