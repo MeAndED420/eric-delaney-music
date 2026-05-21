@@ -280,6 +280,9 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   max-width: 760px;
   margin: 0 auto;
 }
+.calendar-grid {
+  padding: 10px;
+}
 
 .calendar-weekdays {
   margin-bottom: 8px;
@@ -290,59 +293,92 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 
 .calendar-day {
   position: relative;
-  min-height: 70px;
-  border: 1px solid var(--gold);
-  background: rgba(0,0,0,.55);
+  min-height: 72px;
+
+  background: rgba(0,0,0,.58);
+
   color: var(--cream);
+
   font-weight: bold;
-  border-radius: 6px;
+
+  border-radius: 10px;
+
   cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  outline: none;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+
+  overflow: hidden;
 }
 
-.calendar-day.available:hover {
-  background: var(--gold);
-  color: #111;
-}
+.calendar-day.available:hover,
+.calendar-day.unavailable:hover {
+  transform: translateY(-2px);
 
+  background: rgba(0,0,0,.82);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.35);
+}
 .calendar-day.empty {
   border: none;
   background: transparent;
   cursor: default;
 }
 
+.calendar-day.available {
+  border: 2px solid var(--gold);
+}
+
 .calendar-day.unavailable {
-  overflow: hidden;
+  border: 2px solid #a855f7;
+
   cursor: pointer;
+
   opacity: 1;
-  border: 1px solid #a855f7;
 }
 
 .day-number {
   position: absolute;
-  top: 6px;
-  right: 8px;
+
+  bottom: 8px;
+  right: 10px;
+
   z-index: 3;
-  font-size: 0.9rem;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
   color: white;
+
   text-shadow: 0 1px 4px black;
 }
 
 .live-mark {
   position: absolute;
-  top: 8px;
-  left: 8px;
 
-  background: rgba(0, 0, 0, 0.78);
+  top: 7px;
+  left: 7px;
 
-  color: #ff4040;
+  background: rgba(0,0,0,.82);
 
-  border: 1px solid #ff4040;
+  color: #ff4d4d;
 
-  border-radius: 8px;
+  border: 1px solid rgba(255,77,77,.65);
 
-  padding: 2px 7px;
+  border-radius: 999px;
 
-  font-size: 0.7rem;
+  padding: 3px 8px;
+
+  font-size: 0.62rem;
 
   font-weight: 900;
 
@@ -350,9 +386,10 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 
   text-transform: uppercase;
 
-  z-index: 2;
+  z-index: 3;
 
-  box-shadow: 0 0 10px rgba(255, 64, 64, 0.45);
+  box-shadow:
+    0 0 10px rgba(255,77,77,.25);
 }
 
 #dateMessage {
