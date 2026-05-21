@@ -327,13 +327,13 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 
 .cat-mark {
   position: absolute;
-  inset: 0;
-  background-image: url("assets/felix-cat2.jpg");
+  inset: 6px;
+  background-image: url("assets/Felxi cat2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 6px;
-  opacity: 0.9;
+  opacity: 1;
   z-index: 1;
   pointer-events: none;
 }
