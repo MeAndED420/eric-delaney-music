@@ -441,23 +441,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document
-      .querySelectorAll(".calendar-day.available")
+      document
+  .querySelectorAll(".calendar-day:not(.empty)")
       .forEach(day => {
 
         day.addEventListener("click", () => {
 
           const selectedDate = day.dataset.date;
+const isBooked = day.classList.contains("unavailable");
 
-          dateMessage.innerHTML = `
-            <strong>${selectedDate}</strong>
-            is available.<br><br>
+dateMessage.innerHTML = `
+  <strong>${selectedDate}</strong><br>
+  ${isBooked 
+    ? "Eric may already be booked, but you can still send an inquiry."
+    : "This date appears available."}
+  <br><br>
 
-            <a class="btn"
-   href="#contact"
-   onclick="document.querySelector('input[name=date]').value='${selectedDate}'">
-   Book This Date
-</a>
-          `;
+  <a class="btn"
+     href="#contact"
+     onclick="document.querySelector('input[name=date]').value='${selectedDate}'">
+     Send Booking Inquiry
+  </a>
+`;
         });
 
       });
