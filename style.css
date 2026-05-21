@@ -316,19 +316,24 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 }
 
 .day-number {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  z-index: 3;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 0 1px 4px black;
 }
 
-.x-mark {
+.cat-mark {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ff3333;
-  font-size: 3rem;
-  font-weight: bold;
+  background-image: url("assets/felix-cat2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  opacity: 0.9;
   z-index: 1;
   pointer-events: none;
 }
