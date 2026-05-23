@@ -441,10 +441,26 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 }
 
 .breaking-logo {
-  width: 82px;
-  height: 82px;
+  width: 92px;
+  height: 92px;
 
-  object-fit: cover;
+  object-fit: contain;
+
+  object-position: center bottom;
+
+  padding: 4px;
+
+  background: rgba(0,0,0,.35);
+
+  border-radius: 14px;
+
+  border: 2px solid rgba(168,85,247,.7);
+
+  box-shadow:
+    0 0 18px rgba(168,85,247,.35);
+
+  transition: 0.2s ease;
+}
 
   border-radius: 14px;
 
