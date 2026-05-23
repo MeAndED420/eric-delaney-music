@@ -344,22 +344,65 @@ const pastShows = document.getElementById("pastShows");
 let showingAllUpcoming = false;
 
 function createShowHTML(show) {
-  const showDate = new Date(show.date + "T00:00:00");
-  const month = showDate.toLocaleString("en-US", { month: "short" });
-  const day = String(showDate.getDate()).padStart(2, "0");
-  const year = showDate.getFullYear();
 
-  const note = show.note ? `<small>${show.note}</small>` : "";
-  const subject = encodeURIComponent(`${show.venue} ${month}/${day}/${year}`);
+  const showDate = new Date(show.date + "T00:00:00");
+
+  const month = showDate.toLocaleString("en-US", {
+    month: "short"
+  });
+
+  const day = String(showDate.getDate()).padStart(2, "0");
+
+  const note = show.note
+    ? `<small class="show-note">${show.note}</small>`
+    : "";
+
+  const location = show.location
+    ? `<div class="show-location">${show.location}</div>`
+    : "";
+
+  const infoButton = show.link
+    ? `
+      <a
+        class="show-info-btn"
+        href="${show.link}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ${show.type || "Info"}
+      </a>
+    `
+    : `
+      <a
+        class="show-info-btn"
+        href="#contact"
+        onclick="document.querySelector('input[name=date]').value='${show.date}'"
+      >
+        Info
+      </a>
+    `;
 
   return `
     <div class="show">
-      <strong>${month}<br />${day}</strong>
-      <p>${show.venue}<br>${note}</p>
-      <a href="#contact"
-   onclick="document.querySelector('input[name=date]').value='${show.date}'">
-   Info
-</a>
+
+      <strong>
+        ${month}<br />${day}
+      </strong>
+
+      <div class="show-details">
+
+        <p class="show-venue">
+          ${show.venue}
+        </p>
+
+        ${location}
+
+        ${note}
+
+      </div>
+
+      ${infoButton}
+
     </div>
   `;
 }
