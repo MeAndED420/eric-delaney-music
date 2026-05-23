@@ -469,15 +469,18 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 .breaking-label {
   color: var(--gold);
 
-  font-size: 0.72rem;
+  font-size: 1.15rem;
 
   font-weight: 900;
 
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 
   text-transform: uppercase;
+
+  text-shadow:
+    0 0 12px rgba(247,185,30,.45);
 }
 
 .breaking-text {
