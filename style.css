@@ -525,9 +525,10 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
     font-size: 1rem;
   }
 
-  .breaking-center {
-    animation: scrollNextShow 16s linear infinite;
-  }
+ .breaking-center {
+  animation: scrollNextShow 28s linear infinite;
+  min-width: max-content;
+}
 
   .breaking-link {
     display: none;
@@ -536,10 +537,10 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 
 @keyframes scrollNextShow {
   0% {
-    transform: translateX(100%);
+    transform: translateX(100vw);
   }
 
   100% {
-    transform: translateX(-140%);
+    transform: translateX(-100%);
   }
 }
