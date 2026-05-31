@@ -413,7 +413,7 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 2%;
+  padding: 6px 2%;
   background: linear-gradient(90deg, #260035, #05020a 45%, #2b0038);
   border-top: 1px solid rgba(247,185,30,.35);
   border-bottom: 1px solid rgba(247,185,30,.35);
@@ -424,8 +424,8 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 }
 
 .breaking-logo {
-  width: 92px;
-  height: 92px;
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   border-radius: 14px;
   border: 2px solid #a855f7;
@@ -437,7 +437,7 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 10px;
   text-align: center;
   white-space: nowrap;
 }
@@ -454,7 +454,7 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 .breaking-subtext,
 .breaking-date {
   color: var(--cream);
-  font-size: 1.45rem;
+  font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: .5px;
   text-shadow: 0 2px 10px #000;
@@ -464,7 +464,7 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 .breaking-text,
 .breaking-subtext {
   border-right: 1px solid var(--gold);
-  padding-right: 28px;
+  padding-right: 10px;
 }
 
 .breaking-date {
@@ -477,7 +477,7 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   flex: 0 0 auto;
   border: 2px solid var(--gold);
   color: var(--gold);
-  padding: 12px 24px;
+  padding: 6px 14px;
   border-radius: 999px;
   text-transform: uppercase;
   font-size: .8rem;
