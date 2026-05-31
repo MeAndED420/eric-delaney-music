@@ -412,8 +412,8 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 .breaking-news {
   display: flex;
   align-items: center;
-  gap: 38px;
-  padding: 28px 4%;
+  gap: 14px;
+  padding: 14px 2%;
   background: linear-gradient(90deg, #260035, #05020a 45%, #2b0038);
   border-top: 1px solid rgba(247,185,30,.35);
   border-bottom: 1px solid rgba(247,185,30,.35);
