@@ -399,7 +399,39 @@ function toggleUpcomingShows() {
   renderShows();
 }
 
+function renderNextShowBanner() {
+  const futureShows = shows
+    .slice()
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .filter(show => new Date(show.date + "T00:00:00") >= today);
+
+  const nextShow = futureShows[0];
+
+  if (!nextShow) {
+    document.getElementById("nextShowLabel").textContent = "STAY TUNED";
+    document.getElementById("nextShowVenue").textContent = "More Tasty Tunes coming soon";
+    document.getElementById("nextShowLocation").textContent = "";
+    document.getElementById("nextShowDate").textContent = "";
+    return;
+  }
+
+  const showDate = new Date(nextShow.date + "T00:00:00");
+
+  const formattedDate = showDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+
+  document.getElementById("nextShowLabel").textContent = "NEXT UP LIVE: TASTY TUNES";
+  document.getElementById("nextShowVenue").textContent = nextShow.venue;
+  document.getElementById("nextShowLocation").textContent = nextShow.note || "";
+  document.getElementById("nextShowDate").textContent = formattedDate;
+}
+
 renderShows();
+renderNextShowBanner();
 </script>
 
 <script>
