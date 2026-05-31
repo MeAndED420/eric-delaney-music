@@ -444,13 +444,12 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
 
 .breaking-label {
   color: var(--gold);
-  font-size: 1.9rem;
+  font-size: 1.25rem;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-shadow: 0 0 12px rgba(247,185,30,.45);
 }
-
 .breaking-text,
 .breaking-subtext,
 .breaking-date {
