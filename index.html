@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ...new Set([...bookedDates, ...extraBlockedDates])
   ];
 
-  let currentCalendarDate = new Date(2026, 4, 1);
+  let currentCalendarDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
   const calendarMonth = document.getElementById("calendarMonth");
   const calendarGrid = document.getElementById("calendarGrid");
