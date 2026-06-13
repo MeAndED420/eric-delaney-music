@@ -168,19 +168,7 @@ h2 {
 .tracks { list-style: none; padding: 0; }
 .tracks li { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid rgba(255,255,255,.12); cursor: pointer; }
 .tracks li.active { color: var(--gold); border: 1px solid var(--gold); border-radius: 5px; }
-.show {
-  display: grid;
-  grid-template-columns: 70px minmax(0,1fr) 80px;
-  gap: 14px;
-  align-items: center;
-} 
-.show p {
-  margin: 0;
-  line-height: 1.25;
-  word-break: normal;
-  overflow-wrap: normal;
-}
-padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+.show { display: grid; grid-template-columns: 70px 1fr 80px; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
 .show strong { border: 1px solid #e91e63; padding: 10px; text-align: center; font-size: 1.3rem; }
 .show a { border: 1px solid var(--gold); padding: 8px 10px; color: var(--cream); text-transform: uppercase; font-size: .85rem; }
 .photo-placeholder { height: 170px; margin-bottom: 18px; }
