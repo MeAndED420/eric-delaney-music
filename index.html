@@ -392,13 +392,13 @@ function renderShows() {
     return showDate < today;
   });
 
-  const visibleUpcoming = showingAllUpcoming ? futureShows : futureShows.slice(0, 10);
+  const visibleUpcoming = showingAllUpcoming ? futureShows : futureShows.slice(0, 6);
 
   visibleUpcoming.forEach(show => {
     upcomingShows.innerHTML += createShowHTML(show);
   });
 
-  if (futureShows.length > 10) {
+  if (futureShows.length > 6) {
     upcomingShows.innerHTML += `
       <button class="btn view-more-btn" onclick="toggleUpcomingShows()">
         ${showingAllUpcoming ? "Show Less" : "View More Shows"}
