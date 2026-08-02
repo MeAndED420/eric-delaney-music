@@ -412,14 +412,14 @@ const newestPastShows = oldShows.reverse();
 // Initially show only the 10 most recent past shows
 const visiblePastShows = showingAllPast
   ? newestPastShows
-  : newestPastShows.slice(0, 10);
+  : newestPastShows.slice(0, 5);
 
 visiblePastShows.forEach(show => {
   pastShows.innerHTML += createShowHTML(show);
 });
 
 // Add the View More / Show Less button only when there are over 10 past shows
-if (newestPastShows.length > 10) {
+if (newestPastShows.length > 5) {
   pastShows.innerHTML += `
     <button
       type="button"
