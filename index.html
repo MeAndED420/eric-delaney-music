@@ -328,6 +328,7 @@ const upcomingShows = document.getElementById("upcomingShows");
 const pastShows = document.getElementById("pastShows");
 
 let showingAllUpcoming = false;
+let showingAllPast = false;
 
 function createShowHTML(show) {
   const showDate = new Date(show.date + "T00:00:00");
@@ -380,9 +381,32 @@ function renderShows() {
     `;
   }
 
-  oldShows.reverse().forEach(show => {
-    pastShows.innerHTML += createShowHTML(show);
-  });
+  // Put the newest past shows first
+const newestPastShows = oldShows.reverse();
+
+// Initially show only the 10 most recent past shows
+const visiblePastShows = showingAllPast
+  ? newestPastShows
+  : newestPastShows.slice(0, 10);
+
+visiblePastShows.forEach(show => {
+  pastShows.innerHTML += createShowHTML(show);
+});
+
+// Add the View More / Show Less button only when there are over 10 past shows
+if (newestPastShows.length > 10) {
+  pastShows.innerHTML += `
+    <button
+      type="button"
+      class="btn view-more-btn"
+      onclick="togglePastShows()"
+    >
+      ${showingAllPast
+        ? "Show Less Past Shows"
+        : "View More Past Shows"}
+    </button>
+  `;
+}
 
   if (oldShows.length === 0) {
     document.querySelector(".past-title").style.display = "none";
@@ -393,6 +417,11 @@ function renderShows() {
 
 function toggleUpcomingShows() {
   showingAllUpcoming = !showingAllUpcoming;
+  renderShows();
+}
+
+function togglePastShows() {
+  showingAllPast = !showingAllPast;
   renderShows();
 }
 
