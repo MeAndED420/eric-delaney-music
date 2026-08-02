@@ -731,3 +731,46 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
     font-size: 0.78rem;
   }
 }
+
+/* ==========================
+   Featured Concerts
+========================== */
+
+.festival-promo{
+    margin-top:30px;
+    text-align:center;
+}
+
+.festival-promo h3{
+    margin-bottom:14px;
+    color:#f7d64b;
+    font-size:1.25rem;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.festival-promo a{
+    display:inline-block;
+}
+
+.festival-promo img{
+    width:100%;
+    max-width:240px;
+    border-radius:12px;
+    border:3px solid #f7d64b;
+    box-shadow:0 0 18px rgba(247,214,75,.35);
+    transition:all .25s ease;
+}
+
+.festival-promo img:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 30px rgba(247,214,75,.65);
+}
+
+.festival-promo p{
+    margin-top:12px;
+    color:#ffffff;
+    font-size:.95rem;
+    line-height:1.5;
+}
