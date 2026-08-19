@@ -921,3 +921,42 @@ footer { padding: 30px 7%; color: rgba(239,226,197,.7); }
   .video-grid { grid-template-columns: 1fr; }
   .video-heading { align-items: center; }
 }
+
+/* ==========================
+   TASTE TEST STICKER
+========================== */
+
+.taste-test-sticker {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 38px auto 10px;
+  padding: 0 10px;
+}
+
+.taste-test-sticker img {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+
+  /* Removes the visible square corners */
+  clip-path: circle(49% at 50% 50%);
+
+  /* Helps the sticker blend into the dark panel */
+  filter:
+    drop-shadow(0 8px 18px rgba(0,0,0,.65))
+    drop-shadow(0 0 10px rgba(247,185,30,.18));
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .taste-test-sticker {
+    margin-top: 28px;
+    padding: 0;
+  }
+
+  .taste-test-sticker img {
+    max-width: 310px;
+  }
+}
